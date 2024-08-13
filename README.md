@@ -56,7 +56,7 @@ from the project's root directory. We encourage you to play around with differen
 
 ### Unmasking the Transformer
 
-In order to remove the masking from the Encoder's self-attention block and the Decoder's cross-attention block, and therefore revert the architecture to the one proposed in the [Attention is All You Need](https://arxiv.org/pdf/1706.03762) paper, do the following: 
+In order to remove the masking from the Encoder's self-attention block and the Decoder's cross-attention block, thus reverting the architecture to the one proposed in the [Attention is All You Need](https://arxiv.org/pdf/1706.03762) paper, do the following: 
 
 1. in [encoder.py](./models/blocks/encoder.py), modify the line
     ```python
@@ -79,7 +79,7 @@ In order to remove the masking from the Encoder's self-attention block and the D
     )
     ```
 
-Keep in mind that unmasking is typically needed for most tasks other than sequente completion.
+Keep in mind that unmasking is typically needed for most tasks other than sequence completion.
 
 ### Inference
 
@@ -88,7 +88,7 @@ To run inference, call `Transformer.generate`, which takes two parameters:
 - `idx`: a `torch.Tensor` with the initial token sequence
 - `max_new_tokens`: an `int` defining how many new tokens should be appended to `idx`
 
-and them decode the output with the `decode` function
+and then decode the output with the `decode` function
 
 ```python
 import torch
