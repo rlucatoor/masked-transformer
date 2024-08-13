@@ -4,7 +4,7 @@
     <img src='./figures/masked_optimus.png' width='700'>
 </p>
 
-This is a Pytorch implementation of a Masked-Attention-only, Encoder-Decoder Transformer. While capable of performing any task that a regular transformer can perform (most of which, however, typically require the masking to be dropped, [see below](#unmasking-the-transformer)), the Transformer defined in this code is specifically designed for <b>text-generation</b>, and particularly <b>sequence completion</b>, tasks (hence the masking).
+This is a Pytorch implementation of a Masked-Attention-only, Encoder-Decoder Transformer. While capable of performing any task that a regular transformer can perform (most of which, however, typically require the masking to be dropped from two of the three attention blocks, [as explained here](#unmasking-the-transformer)), the Transformer defined in this code is specifically designed for <b>text generation</b>, and particularly <b>sequence completion</b>, tasks (hence the masking).
 
 ## Model Overview
 
@@ -12,7 +12,7 @@ This is a Pytorch implementation of a Masked-Attention-only, Encoder-Decoder Tra
     <img src='./figures/architecture.png' width='600'>
 </p>
 
-The code follows almost identically the architecture proposed in original [Attention is All You Need](https://arxiv.org/pdf/1706.03762) paper, except for one detail: in the original paper the only <b>Masked</b> Attention Block is the Self-Attention block used by the Decoder, the other two Attention blocks (meaning the Encoder's Self-Attention block and the Decoder's Cross-Attention block) being unmasked, whereas in this implementation all three Attention blocks are masked.
+The code follows almost identically the architecture proposed in the [Attention is All You Need](https://arxiv.org/pdf/1706.03762) paper, except for one detail: in the original paper the only <b>Masked</b> Attention Block is the Decoder's Self-Attention block, the other two Attention blocks (meaning the Encoder's Self-Attention block and the Decoder's Cross-Attention block) being unmasked, whereas in this implementation all three Attention blocks are masked.
 
 This was done to ensure that the Transformer can be used specifically for sequence-completion tasks, which require that the identity of future tokens not be given away during training.
 
@@ -32,7 +32,7 @@ We trained our model on a corpus consisting of [all of Shakespeare's work](./dat
 |---|----|----|-------|-------|-----------|--------|
 | 4 | 32 | 64 | 64    | dim_k | 4         | 256    |
 
-Where:
+where:
 
 - `B`: batch size
 - `T`: context (or window) size
